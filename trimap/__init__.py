@@ -1,5 +1,10 @@
 from .trimap_ import TRIMAP
 
-import pkg_resources
+from importlib.metadata import version, PackageNotFoundError
 
-__version__ = pkg_resources.get_distribution("trimap").version
+try:
+    __version__ = version('trimap')
+except PackageNotFoundError:
+    __version__ = "unknown"
+
+__all__ = ["TRIMAP"]
